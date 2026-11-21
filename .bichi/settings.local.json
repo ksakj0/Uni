@@ -1,0 +1,6 @@
+{
+  "allow": [
+    "shell:python3 -m",
+    "shell:python --version"
+  ]
+}
