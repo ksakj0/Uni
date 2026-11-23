@@ -3,7 +3,7 @@ desc = [""]
 price = []
 
 size = int(input("Cuantos elementos tendra la lista? "))   
-         
+
 clave = [0] * size
 desc = [None] * size
 price = [0] * size
