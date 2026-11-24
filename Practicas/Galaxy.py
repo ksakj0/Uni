@@ -1,6 +1,6 @@
 import turtle as t
 import colorsys
-import math
+import math as m
 import random as r
 
 r.seed(7)
@@ -20,7 +20,7 @@ def glow(h, v=1.0):
 
 def place(x, y):
     y *= 0.55
-    c, s = math.cos(TILT), math.sin(TILT)
+    c, s = m.cos(TILT), m.sin(TILT)
     t.goto(x * c - y * s, x * s + y * c)
 
 def stars():
@@ -34,18 +34,18 @@ def dust():
     for _ in range(700):
         z = r.gauss(0, 120)
         a = r.uniform(0, 6.283)
-        place(z * math.cos(a), z * math.sin(a))
+        place(z * m.cos(a), z * m.sin(a))
         t.dot(r.randint(2, 4), glow(0.7, 0.3))
 
 def arms(count):
     for i in range(count):
         for k in range(4):
             d = i / count
-            a = k * math.pi / 2 + d * 5.5
+            a = k * m.pi / 2 + d * 5.5
             z = 10 + d * 290
             s = 4 + d * 26
-            x = z * math.cos(a) + r.gauss(0, s)
-            y = z * math.sin(a) + r.gauss(0, s)
+            x = z * m.cos(a) + r.gauss(0, s)
+            y = z * m .sin(a) + r.gauss(0, s)
             place(x, y)
             hue = 0.13 - d * 0.55
             v = r.uniform(0.6, 1)
@@ -56,14 +56,14 @@ def core():
     for _ in range(260):
         z = r.gauss(0, 26)
         a = r.uniform(0, 6.283)
-        place(z * math.cos(a), z * math.sin(a))
+        place(z * m.cos(a), z * m.sin(a))
         t.dot(r.randint(2, 5), glow(0.12))
 
 def sparkle():
     for _ in range(40):
         z = r.gauss(0, 150)
         a = r.uniform(0, 6.283)
-        place(z * math.cos(a), z * math.sin(a))
+        place(z * m.cos(a), z * m.sin(a))
         t.dot(r.randint(5, 8), "white")
 
 stars()
