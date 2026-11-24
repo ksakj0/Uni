@@ -19,3 +19,21 @@ for f in range(filas):
 for f in range(filas):
     if matriz[f][f] is not None:
         print(f"\n{matriz[f][f]}")
+        
+print("Imprimir los valores que localizan sobre la D.P")
+for f in range(filas):
+    for c in range(columnas):
+        if f<c:
+            print(matriz[f][c])
+            
+
+for f in range(filas):
+    for c in range(columnas):
+        if f>c:
+            print(matriz[f][c])
+            
+print("Imprimir la diagonal inversa")
+for f in range(filas):
+    for c in range(columnas):
+        if f+c == filas-1:
+            print(matriz[f][c])
