@@ -11,8 +11,9 @@ screen.setup(700, 480)
 screen.bgcolor("#03030b")
 screen.colormode(1.0)
 
+screen.tracer(0)
 t.hideturtle()
-t.speed(50)
+t.speed(0)
 t.penup()
 
 def glow(h, v=1.0):
@@ -68,9 +69,10 @@ def sparkle():
 
 stars()
 dust()
-arms(900)
+arms(9000)
 core()
 sparkle()
 t.goto(0, 0)
 t.dot(26, "#fff3c4")
+screen.update()
 t.done()

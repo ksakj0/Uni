@@ -1,5 +1,4 @@
 matriz = []
-pago = []
 vivienda = 0
 mes = 0
 
@@ -17,8 +16,7 @@ while True:
             print(f"\n\n=={'REGISTRO DE VIVIENDAS Y MESES':^30}==\n")
             vivienda = int(input("Ingresa la cantidad de viviendas: "))
             mes = int(input("Ingresa la cantidad de meses: "))
-            matriz.clear()
-            pago.clear()
+            matriz = []
             print(f"\nConfigurado: {vivienda} viviendas y {mes} meses.")
             print("Ahora use la opcion 2 para capturar los consumos.")
 
@@ -29,15 +27,13 @@ while True:
                 print("\nPrimero configure la cantidad de viviendas y meses (opcion 1).")
             else:
                 print(f"\n\n=={'CAPTURA DE CONSUMOS':^30}==\n")
-                matriz.clear()
-                pago.clear()
+                matriz = [None] * vivienda
                 for f in range(vivienda):
-                    fila = []
+                    matriz[f] = [0] * mes
                     print(f"--- Vivienda {f + 1} ---")
                     for c in range(mes):
                         consumo = int(input(f"Consumo de la Vivienda {f + 1}, Mes {c + 1}: "))
-                        fila.append(consumo)
-                    matriz.append(fila)
+                        matriz[f][c] = consumo
                     print()
                 print("Todos los consumos han sido capturados correctamente.")
 
@@ -53,14 +49,15 @@ while True:
                 for c in range(mes):
                     print(f"{'Mes ' + str(c + 1):^8}", end=" ")
                 print()
-                print("-" * (12 + (mes * 9)))
+                separador = "-" * (12 + mes * 9)
+                print(separador)
 
                 for f in range(vivienda):
                     print(f"Vivienda {f + 1:<3} ", end="")
                     for c in range(mes):
                         print(f"{matriz[f][c]:^8}", end=" ")
                     print()
-                print("-" * (12 + (mes * 9)))
+                print(separador)
 
             input("\nPresione ENTER para continuar...")
 
@@ -69,21 +66,20 @@ while True:
                 print("\nPrimero capture los consumos (opcion 2).")
             else:
                 print(f"\n\n=={'CALCULO DE PAGOS':^30}==\n")
-                pago.clear()
+                mayor_pago = 0
+                vivienda_mayor = 1
                 for f in range(vivienda):
                     suma = 0
                     for c in range(mes):
                         suma += matriz[f][c]
-                    pago.append(suma)
                     print(f"Vivienda {f + 1:>2} - Pago acumulado: ${suma}")
 
-                indice = 0
-                for i in range(len(pago)):
-                    if pago[i] > pago[indice]:
-                        indice = i
+                    if f == 0 or suma > mayor_pago:
+                        mayor_pago = suma
+                        vivienda_mayor = f + 1
 
                 print(f"\n=={'MAYOR CONSUMO':^30}==\n")
-                print(f"La vivienda con mayor pago es la Vivienda {indice + 1} con un total de: ${pago[indice]}")
+                print(f"La vivienda con mayor pago es la Vivienda {vivienda_mayor} con un total de: ${mayor_pago}")
 
             input("\nPresione ENTER para continuar...")
 
